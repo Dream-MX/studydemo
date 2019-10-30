@@ -43,6 +43,7 @@ public class ReadWriteLockDemo {
             readWriteLock.readLock().unlock();
         }
 
+
     }
 
     public static void main(String[] args) {
@@ -50,7 +51,7 @@ public class ReadWriteLockDemo {
         for (int i = 1; i < 6; i++) {
             final int num = i;
             new Thread(() -> {
-                readWriteLockDemo.put(num+"","aa");
+                readWriteLockDemo.put(num+"","aa"+num);
             },String.valueOf(i)).start();
 
         }
