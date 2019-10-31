@@ -1,4 +1,6 @@
 
+import java.sql.SQLOutput;
+import java.sql.Time;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
@@ -24,7 +26,11 @@ public class ThreadSocket {
             }
 
         },"aa").start();
-
+        try {
+            TimeUnit.MILLISECONDS.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         new Thread(() -> {
             try {
                 myTest.myCons();
@@ -33,6 +39,13 @@ public class ThreadSocket {
             }
 
         },"bb").start();
+
+        try {
+            TimeUnit.SECONDS.sleep(6);
+            myTest.setFLAG(false);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
 class MyTest{
@@ -59,7 +72,9 @@ class MyTest{
             }
             TimeUnit.SECONDS.sleep(2);
         }
+        System.out.println("停产了");
     }
+
 
     public void myCons() throws Exception {
         String resoult;
@@ -71,8 +86,11 @@ class MyTest{
                 return;
             }
             System.out.println(Thread.currentThread().getName()+"\t 消费成功");
-
         }
+
     }
 
+    public void setFLAG(boolean b){
+        this.FLAG=b;
+    }
 }
