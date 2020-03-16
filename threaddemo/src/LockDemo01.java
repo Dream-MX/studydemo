@@ -15,6 +15,7 @@ public class LockDemo01 {
         String lockB="BB";
         new Thread(new MyLock(lockA,lockB),"AA").start();
         new Thread(new MyLock(lockB,lockA),"AA").start();
+        try {TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);} catch (InterruptedException e) {e.printStackTrace();}
     }
 
 }
