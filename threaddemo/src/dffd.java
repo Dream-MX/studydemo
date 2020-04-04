@@ -9,7 +9,7 @@ import java.sql.SQLOutput;
  */
 public class dffd {
     public static void main(String[] args) {
-        System.out.println("rr");
-        System.out.println("aaa");
+        System.out.println("rrddddddddd");
+        System.out.println("aaaffffffffffffffff");
     }
 }
